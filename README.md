@@ -63,8 +63,8 @@ async function onVideoStateChanged(vState, videostream, vtype) {
 }
 ```
 
-## Request publisher turns off video
-When subscriber receives a fallback message send a stopPublish event to the publisher with the uid so the code can check if webcam or screenshare and turn off the webcam if present before turning off the screenshare.
+## Request publisher turns off Webcam video
+When subscriber receives a fallback message send a stopPublish event to the publisher with the uid so the publisher can turn off webcam if publishing both screenshare and webcam. This will enable Full Path Feedback.   
 
 ```
 function handleStreamFallback(uid,state) {
