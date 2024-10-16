@@ -51,11 +51,11 @@ user.videoTrack.on('video-state-changed', (event) => {
 ```
 Blur the video and if it isn't unblurred within 5 seconds send a message to the publish to turn it off.
 
-Detect the incoming webcam video has frozen and transmit a message to the publish to turn it off
+Detect the incoming webcam video has frozen and blur it
 
 ```
-async function onVideoStateChanged(vState, videostream, vtype, timeout) {
-    console.log(`video-state-changed fired ${vState}`, videostream, vtype, timeout, this);
+async function onVideoStateChanged(vState, videostream, vtype) {
+    console.log(`video-state-changed fired ${vState}`, videostream, vtype);
     if (vState == 3) {
         videostream._player.videoElement.style.filter = "blur(10px)";
         return;
