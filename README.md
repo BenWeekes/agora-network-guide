@@ -18,6 +18,7 @@ Agora also has a mode ENABLE_AUT_CC which will prioritise audio over video and t
   <li>When webcam video fallsback to audio only ask publisher to turn it off</li>
   <li>When screenshare video fallsback to audio only, ask publisher to turn off webcam if present otherwise turn off screenshare</li>
   <li>If publisher detects currentPacketLossRate > 0.4 on outbound video then turn it off</li>
+  <li>Link your networks status indicator to the frozen and fallback/recover events below</li>
 </ul>
 
 Putting this all together
