@@ -17,7 +17,7 @@ Agora also has a mode ENABLE_AUT_CC which will prioritise audio over video and t
   <li>Blur incoming webcam video when frozen (not screenshare)</li>
   <li>When webcam video fallsback to audio only ask publisher to turn it off</li>
   <li>When screenshare video fallsback to audio only, ask publisher to turn off webcam if present otherwise turn off screenshare</li>
-  <li>if publisher detects currentPacketLossRate > 0.4 on outbound video then turn it off</li>
+  <li>if publisher detects agoraClient.getLocalVideoStats().currentPacketLossRate > 0.4 on outbound video then turn it off</li>
 </ul>
 
 Putting this all together
@@ -49,10 +49,8 @@ user.videoTrack.on('video-state-changed', (event) => {
     onVideoStateChanged(event, user.videoTrack, 'webcam');
 });
 ```
-Blur the video and if it isn't unblurred within 5 seconds send a message to the publish to turn it off.
 
 Detect the incoming webcam video has frozen and blur it
-
 ```
 async function onVideoStateChanged(vState, videostream, vtype) {
     console.log(`video-state-changed fired ${vState}`, videostream, vtype);
@@ -79,7 +77,7 @@ function handleStreamFallback(uid,state) {
 }
 ```
 
-## Turn Off the Publisher's Webcam or Screenshare
+## Turn Off the Publisher's Webcam
 This code shows how to receive a custom message at the publisher client in order to turn off his webcam and show a toast message 
 ```
 function handleStreamMessage(senderId, data) {
