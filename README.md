@@ -95,6 +95,7 @@ agoraClient.on("stream-message", handleStreamMessage);
 ## Turn Off the Publisher's Outgoing Video When Very High Packet Loss On Uplink
 Monitor the currentPacketLossRate for all outbound video every 1 second.    
 currentPacketLossRate is the average over a 400ms window.    
+0.4 equates to 40% packet loss   
 ```
 if (agoraClient.getLocalVideoStats().currentPacketLossRate > 0.4) {
     // stop publishing video
