@@ -27,10 +27,16 @@ Putting this all together
 Set this parameter after calling createClient in order for the server to drop video when the downlink is suffering high packet loss due to congestion
 
 Video will be dropped by server
-
 ```
     agoraClient = await AgoraRTC.createClient({ mode: "rtc", codec: codec_ });
     AgoraRTC.setParameter("ENABLE_AUT_CC", true);
+
+```
+
+Enable fallback/recover events for the ENABLE_AUT_CC algorithm       
+Call this after subscribing to remote video for each stream      
+```
+     agoraClient.setStreamFallbackOption(user.uid, 2);
 
 ```
 ## Detect and Blur Frozen Webcam 
